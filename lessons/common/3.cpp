@@ -16,6 +16,8 @@ int printCounter (int max) {
 int main() {
     int a, b, c, max;
 
+    cout << "Find maximum number and print counter" << endl;
+
     cout << "Введите 1е значение (А) : ";
     cin >> a;
 
