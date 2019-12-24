@@ -8,4 +8,3 @@
 ![6.jpeg](../../images/c++/6.jpeg)
 ![7.jpeg](../../images/c++/7.jpeg)
 
-*end time 2h:32min*
