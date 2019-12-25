@@ -15,6 +15,8 @@ int calculateModulo(int a, int b) {
 }
 
 int main() {
+    cout << "Вычисление наибольшего делителя двух чисел" << endl;
+
     int x, y;
 
     cout << "Введите первое число" << endl;
