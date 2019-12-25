@@ -2,7 +2,17 @@
 
 using namespace std;
 
+int transformNegative(int num) {
+    if(num < 0) {
+        return -num;
+    }
+    return num;
+}
+
 int calculateModulo(int a, int b) {
+    a = transformNegative(a);
+    b = transformNegative(b);
+
     while (a != 0 && b != 0) {
         if(a > b) {
             a = a % b;
@@ -30,13 +40,6 @@ int main() {
     if(x == 0 || y == 0) {
         cout << "Операция с нулем не имеет смысла" << endl;
         return 0;
-    }
-
-    if(x < 0) {
-        x = -x;
-    }
-    if(y < 0) {
-        y = -y;
     }
 
     int result = calculateModulo(x, y);
