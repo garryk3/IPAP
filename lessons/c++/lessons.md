@@ -7,7 +7,8 @@
 ![5.JPG](../../images/c++/5.JPG)
 ![6.jpeg](../../images/c++/6.jpeg)
 ![7.jpeg](../../images/c++/7.jpeg)
+![8.jpeg](../../images/c++/8.jpeg)
 
 **2st lesson**
 
-*1h1m*
+*2h10m*
