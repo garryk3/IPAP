@@ -8,6 +8,7 @@
 ![6.jpeg](../../images/c++/6.jpeg)
 ![7.jpeg](../../images/c++/7.jpeg)
 ![8.jpeg](../../images/c++/8.jpeg)
+![9.jpeg](../../images/c++/9.jpeg)
 
 **2st lesson**
 
