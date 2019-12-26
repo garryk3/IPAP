@@ -12,4 +12,6 @@
 
 **3st lesson**
 
-*1h10m*
+![10.JPG](../../images/c++/10.JPG)
+
+*1h31m*
