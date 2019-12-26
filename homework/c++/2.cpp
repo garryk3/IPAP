@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -6,55 +7,49 @@ using namespace std;
 // x*x + y*y = 1 радиус круга
 // y = -|x| нижний треугольник
 
-bool detectedOut(int x, int y) {
+bool detectedOut(double x, double y) {
     return x * x + y * y > 1;
 }
-bool detectM1Area(int x, int y) {
-    bool isXInArea = x >= y / x;
-    bool isYInArea = y >= x * x;
-    return isXInArea && isYInArea;
-}
-bool detectM2Area(int x, int y) {
-    if(y >= 0 || x <= 0) {
-        return false;
-    }
-    bool isXInArea = x <= -y;
-    bool isYInArea = y <= -x;
-    return isXInArea && isYInArea;
-}
-bool detectM3Area(int x, int y) {
-    bool isXInArea = x <= 0;
-    bool isYInArea = y <= 0;
-    return isXInArea && isYInArea;
-}
-bool detectM4Area(int x, int y) {
-    bool isXInArea = (x <= 0 && x >= y/x) || (x >= 0 && x >= y/x) || (x >= 0 && x >= -y);
-    bool isYInArea = (y >= 0 && y <= x*x) || (y <= 0 && y >= -x);
-    return isXInArea && isYInArea;
-}
-bool detectZero(int x, int y) {
+bool detectZero(double x, double y) {
     return x == 0 && y == 0;
 }
+bool detectM1Area(double x, double y) {
+    return y >= 0 && y >= x * x;
+}
+bool detectM2Area(double x, double y) {
+    return x >= 0 && y <= 0 && y >= -abs(x);
+}
+bool detectM3Area(double x, double y) {
+    return x <= 0 && y <= 0;
+}
+bool detectM4Area(double x, double y) {
+    return (y >= 0 && y <= x * x) || (x >= 0 && y <= 0 && y <= -abs(x));
+}
+
 string handleResult(bool includedArea, string name) {
     return includedArea ? name + " " : "";
 }
 
-void printResult(int x, int y) {
+void printResult(double x, double y) {
     bool isOut = detectedOut(x, y);
     if(isOut) {
-        cout << "Вы попали вне круга";
+        cout << "Вы попали вне круга" << endl;
         return;
     }
     bool isNull = detectZero(x, y);
     if(isNull) {
-        cout << "Вы попали в начало координат, точка принадлежит всем зонам";
+        cout << "Вы попали в начало координат, точка принадлежит всем зонам" << endl;
         return;
     }
 
     bool hasM1 = detectM1Area(x, y);
-    bool hasM2 = detectM1Area(x, y);
-    bool hasM3 = detectM1Area(x, y);
-    bool hasM4 = detectM1Area(x, y);
+    bool hasM2 = detectM2Area(x, y);
+    bool hasM3 = detectM3Area(x, y);
+    bool hasM4 = detectM4Area(x, y);
+
+    if(!hasM1 && !hasM2 && !hasM3 && !hasM4) {
+        cout << "Сбой программы!" << endl;
+    }
 
     cout << "Вы попали в следующие зоны: " << handleResult(hasM1, "M1") << handleResult(hasM2, "M2") << handleResult(hasM3, "M3") << handleResult(hasM4, "M4") << endl; 
 }
