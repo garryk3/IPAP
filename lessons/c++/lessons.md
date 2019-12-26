@@ -10,6 +10,6 @@
 ![8.jpeg](../../images/c++/8.jpeg)
 ![9.jpeg](../../images/c++/9.jpeg)
 
-**2st lesson**
+**3st lesson**
 
-*2h10m*
+*1h10m*

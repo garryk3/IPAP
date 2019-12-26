@@ -2,7 +2,8 @@
 #include <cmath>
 
 using namespace std;
-
+// нахождение введенных координат относительно круга, нарисованного в центре координат радиусом 1,
+// разделенного на части параболой, прямой, и системой координат (рис в description)
 // y = x*x; парабола
 // x*x + y*y = 1 радиус круга
 // y = -|x| нижний треугольник
@@ -31,14 +32,15 @@ string handleResult(bool includedArea, string name) {
 }
 
 void printResult(double x, double y) {
-    bool isOut = detectedOut(x, y);
-    if(isOut) {
-        cout << "Вы попали вне круга" << endl;
-        return;
-    }
     bool isNull = detectZero(x, y);
     if(isNull) {
         cout << "Вы попали в начало координат, точка принадлежит всем зонам" << endl;
+        return;
+    }
+
+    bool isOut = detectedOut(x, y);
+    if(isOut) {
+        cout << "Вы попали вне круга" << endl;
         return;
     }
 
