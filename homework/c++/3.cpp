@@ -31,7 +31,7 @@ int calcucateNeededNominalCount(int sumPart, int nominal, int nominalCount) {
 
 string getCalculatedResult(int nextCalculateSum, int nominal, int nominalCount) {
     string result = "";
-    if(nextCalculateSum && nextCalculateSum >= nominal) {
+    if(nextCalculateSum && nextCalculateSum >= nominal && nominalCount > 0) {
         int calcNominalCount = calcucateNeededNominalCount(nextCalculateSum, nominal, nominalCount);
         if(calcNominalCount) {
             result = result + to_string(calcNominalCount) + "x " + to_string(nominal) + " ";
@@ -40,7 +40,7 @@ string getCalculatedResult(int nextCalculateSum, int nominal, int nominalCount) 
     return result;
 }
 
-void printCalculatedResult(int sum) {
+int printCalculatedResult(int sum) {
     int count50 = 7;
     int count100 = 3;
     int count200 = 5;
@@ -51,10 +51,11 @@ void printCalculatedResult(int sum) {
     int maxSum = count50 * 50 + count100 * 100 + count200 * 200 + count500 * 500 + count1000 * 1000 + count2000 * 2000 + count5000 * 5000;
     string result = "Вам выданы купюры: ";
     int nextCalculateSum = 0;
+    bool operationFailed = false;
 
     if(sum > maxSum) {
         cout << "В банкомате недостаточно денег для выдачи!" << endl;
-        return;
+        return 0;
     }
 
     result = getCalculatedResult(sum, 5000, count5000);
@@ -93,16 +94,31 @@ void printCalculatedResult(int sum) {
     if(result50 != "") {
         nextCalculateSum = nextCalculateSum % 50;
         result = result + result50;
+    } else if(nextCalculateSum > 0) {
+        operationFailed = true;
+    }
+    if(operationFailed) {
+        cout << "Недостаточно купюр нужного номинала, попробуйте другую сумму...";
+        return 0;
     }
 
     cout << result;
     cout << endl;
+
+    return 1;
+}
+
+int startBankOperation() {
+    int sum = requestSumFromUser();
+    cout << "Рассчитывается возможность снятия суммы " << sum << " рублей! Ожидайте выдачи купюр..." << endl;
+    return printCalculatedResult(sum);
 }
 
 int main() {
-    int sum = requestSumFromUser();
+    bool isCorrectOperation = startBankOperation() == 1;
 
-    cout << "Рассчитывается возможность снятия суммы " << sum << " рублей! Ожидайте выдачи купюр..." << endl;
-    printCalculatedResult(sum);
+    while(!isCorrectOperation) {
+        isCorrectOperation = startBankOperation() == 1;
+    }
     return 0;
 }
