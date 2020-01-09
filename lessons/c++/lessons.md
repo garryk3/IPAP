@@ -15,4 +15,5 @@
 ![10.JPG](../../images/c++/10.JPG)
 ![11.JPG](../../images/c++/11.JPG)
 
-*1h31m*
+**4 lesson**
+*1h:22m*
