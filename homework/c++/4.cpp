@@ -9,7 +9,7 @@ const int BREAK_CODE = -1;
 int nominalCounts[LENGTH] = {7, 5, 5, 4, 2, 4, 0};
 const int nominals[LENGTH] = {5000, 2000, 1000, 500, 200, 100, 50};
 
-bool checkCorrectSum(int sum) {
+bool checkIsIncorrectSum(int sum) {
     return sum % 50 != 0 || sum <= 0;
 }
 
@@ -22,12 +22,12 @@ int requestSumFromUser() {
         return sum;
     }
 
-    bool sumIsIncorrect = checkCorrectSum(sum);
+    bool sumIsIncorrect = checkIsIncorrectSum(sum);
 
     while(sumIsIncorrect) {
         cout << "Введите корректную сумму" << endl;
         sum = requestSumFromUser();
-        sumIsIncorrect = checkCorrectSum(sum);
+        sumIsIncorrect = checkIsIncorrectSum(sum);
     }
 
     return sum;
@@ -57,12 +57,9 @@ int calculateMaxSum(int count[], const int nominal[]) {
     return result;
 }
 
-int printCalculatedResult(int sum) {
-    int maxSum = calculateMaxSum(nominalCounts, nominals);
+int moneyRequestHandler(int sum, int maxSum) {
     string result = "Вам выданы купюры: ";
     int usedNominalCount = 0;
-
-    cout << "В банкомате имеется " << to_string(maxSum) << "рублей" << endl;
 
     if(sum > maxSum) {
         cout << "В банкомате недостаточно денег для выдачи!" << endl;
@@ -86,11 +83,23 @@ int printCalculatedResult(int sum) {
 
     cout << result << endl;
     cout << "В банкомате осталось " << to_string(calculateMaxSum(nominalCounts, nominals)) << "рублей" << endl;
+    cout << "=============================" << endl;
+    cout << "=============================" << endl;
+    cout << "=============================" << endl;
+    cout << "=============================" << endl;
 
     return CONTINUE_CODE;
 }
 
 int startBankOperation() {
+    int maxSum = calculateMaxSum(nominalCounts, nominals);
+
+    if(maxSum == 0) {
+        cout << "В банкомате закончились деньги! Операция прекращена" << endl;
+        return BREAK_CODE;
+    }
+    cout << "В банкомате имеется " << to_string(maxSum) << "рублей" << endl;
+
     int sum = requestSumFromUser();
     if(sum == BREAK_CODE) {
         cout << "Операция отменена" << endl;
@@ -98,7 +107,7 @@ int startBankOperation() {
     }
 
     cout << "Рассчитывается возможность снятия суммы " << sum << " рублей! Ожидайте выдачи купюр..." << endl;
-    return printCalculatedResult(sum);
+    return moneyRequestHandler(sum, maxSum);
 }
 
 int main() {
