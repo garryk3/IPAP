@@ -15,5 +15,5 @@
 ![10.JPG](../../images/c++/10.JPG)
 ![11.JPG](../../images/c++/11.JPG)
 
-**4 lesson**
-*2h:02m*
+**5 lesson**
+*2h:06m*
