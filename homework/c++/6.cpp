@@ -23,12 +23,12 @@ int requestArrLength(char rule[]) {
 void calculateSum() {
     int len = requestArrLength("вычисления суммы чисел");
     const int* arr = buildArrRand(len);
-    char str[len];
+    string str;
     int result = 0;
 
     for(int i = 0; i < len; i++) {
         result += arr[i];
-        str[i] = arr[i];
+        str += arr[i] + ", ";
     }
     cout << "Сумма чисел массива: " << str << "равна: " << to_string(result) << endl;
 }
