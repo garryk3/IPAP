@@ -21,3 +21,4 @@
 ![12.JPG](../../images/c++/12.jpeg)
 
 **6 lesson**
+*2h:10m*

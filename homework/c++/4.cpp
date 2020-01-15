@@ -6,9 +6,6 @@ const int LENGTH = 7;
 const int CONTINUE_CODE = 1;
 const int BREAK_CODE = -1;
 
-int nominalCounts[LENGTH] = {7, 5, 5, 4, 2, 4, 0};
-const int nominals[LENGTH] = {5000, 2000, 1000, 500, 200, 100, 50};
-
 bool checkIsIncorrectSum(int sum) {
     return sum % 50 != 0 || sum <= 0;
 }
@@ -33,7 +30,7 @@ int requestSumFromUser() {
     return sum;
 }
 
-int getCalculatedResult(int sum, int nominal, int nominalCount) {
+int getUsedNominals(const int sum, const int nominal, const int nominalCount) {
     int result = 0;
     if(sum && sum >= nominal && nominalCount > 0) {
         int neededNominalCount = sum / nominal;
@@ -57,21 +54,19 @@ int calculateMaxSum(int count[], const int nominal[]) {
     return result;
 }
 
-int moneyRequestHandler(int sum, int maxSum) {
+int moneyRequestHandler(int sum, int nominalCounts[], const int nominals[]) {
     string result = "Вам выданы купюры: ";
     int usedNominalCount = 0;
-
-    if(sum > maxSum) {
-        cout << "В банкомате недостаточно денег для выдачи!" << endl;
-        return CONTINUE_CODE;
-    }
+    int tempCountCopy[LENGTH];
 
     for(int i = 0; i < LENGTH; i++) {
-        usedNominalCount = getCalculatedResult(sum, nominals[i], nominalCounts[i]);
+        usedNominalCount = getUsedNominals(sum, nominals[i], nominalCounts[i]);
         if(usedNominalCount != 0) {
             sum = sum - usedNominalCount * nominals[i];
-            nominalCounts[i] -= usedNominalCount;
+            tempCountCopy[i] = nominalCounts[i] - usedNominalCount;
             result = concatResultMessage(result, usedNominalCount, nominals[i]);
+        } else {
+            tempCountCopy[i] = nominalCounts[i];
         }
     }
 
@@ -80,6 +75,9 @@ int moneyRequestHandler(int sum, int maxSum) {
         return CONTINUE_CODE;
     }
 
+    for(int i = 0; i < LENGTH; i++) {
+        nominalCounts[i] = tempCountCopy[i];
+    }
 
     cout << result << endl;
     cout << "В банкомате осталось " << to_string(calculateMaxSum(nominalCounts, nominals)) << "рублей" << endl;
@@ -91,7 +89,7 @@ int moneyRequestHandler(int sum, int maxSum) {
     return CONTINUE_CODE;
 }
 
-int startBankOperation() {
+int startBankOperation(int nominalCounts[], const int nominals[]) {
     int maxSum = calculateMaxSum(nominalCounts, nominals);
 
     if(maxSum == 0) {
@@ -100,21 +98,28 @@ int startBankOperation() {
     }
     cout << "В банкомате имеется " << to_string(maxSum) << "рублей" << endl;
 
-    int sum = requestSumFromUser();
+    const int sum = requestSumFromUser();
     if(sum == BREAK_CODE) {
         cout << "Операция отменена" << endl;
         return BREAK_CODE;
     }
+    if(sum > maxSum) {
+        cout << "В банкомате недостаточно денег для выдачи!" << endl;
+        return CONTINUE_CODE;
+    }
 
     cout << "Рассчитывается возможность снятия суммы " << sum << " рублей! Ожидайте выдачи купюр..." << endl;
-    return moneyRequestHandler(sum, maxSum);
+    return moneyRequestHandler(sum, nominalCounts, nominals);
 }
 
 int main() {
-    bool isContinueOperation = startBankOperation() == 1;
+    int nominalCounts[LENGTH] = {7, 5, 5, 4, 0, 0, 0};
+    const int nominals[LENGTH] = {5000, 2000, 1000, 500, 200, 100, 50};
+
+    bool isContinueOperation = startBankOperation(nominalCounts, nominals) == 1;
 
     while(isContinueOperation) {
-        isContinueOperation = startBankOperation() == 1;
+        isContinueOperation = startBankOperation(nominalCounts, nominals) == 1;
     }
     return 0;
 }
