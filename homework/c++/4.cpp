@@ -116,10 +116,10 @@ int main() {
     int nominalCounts[LENGTH] = {7, 5, 5, 4, 0, 0, 0};
     const int nominals[LENGTH] = {5000, 2000, 1000, 500, 200, 100, 50};
 
-    bool isContinueOperation = startBankOperation(nominalCounts, nominals) == 1;
+    bool isContinueOperation = startBankOperation(nominalCounts, nominals) == CONTINUE_CODE;
 
     while(isContinueOperation) {
-        isContinueOperation = startBankOperation(nominalCounts, nominals) == 1;
+        isContinueOperation = startBankOperation(nominalCounts, nominals) == CONTINUE_CODE;
     }
     return 0;
 }
