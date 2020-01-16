@@ -7,9 +7,6 @@ using namespace std;
 const int ERROR_CODE = -1;
 
 int* buildArrRand(const int length, const int minElem = -5, const int maxElem = 100) {
-    if(!length) {
-        return;
-    }
     int arr[length];
 
     for(int i = 0; i < length; i++) {
@@ -18,10 +15,13 @@ int* buildArrRand(const int length, const int minElem = -5, const int maxElem = 
     return arr;
 }
 
-int requestArrLength(char rule[]) {
+int requestArrLength(string rule) {
     int len;
     cout << "Введите длину массива для " << rule << endl;
     cin >> len;
+    while(!len) {
+        len = requestArrLength(rule);
+    }
     return len;
 }
 
