@@ -68,7 +68,6 @@ void calculateMiddleNegative() {
     for(int i = 0; i < len; i++) {
         if(arr[i] < 0) {
             sum += arr[i];
-
             count += 1;
         }
     }
@@ -99,14 +98,12 @@ void calculateMinPositivePosition() {
     const int* arr = buildArrRand(len, -50, 60);
     int pos = ERROR_CODE;
     for(int i = 0; i < len; i++) {
-        if(i == 0 && arr[i] > 0) {
-            pos = i;
-        } else if (arr[i] > 0 && (pos != ERROR_CODE ? arr[i] < arr[pos] : true)) {
+        if (arr[i] > 0 && (pos == ERROR_CODE || arr[i] < arr[pos])) {
             pos = i;
         }
     }
     if(pos != ERROR_CODE) {
-        cout << "Позиция минимального положительного числа массива " << arrToString(arr, len) << "равна " << to_string(pos) << endl;
+        cout << "Позиция минимального положительного числа массива " << arrToString(arr, len) << " равна " << to_string(pos) << endl;
     } else {
         cout << "В массиве " << arrToString(arr, len) << " нет положительных чисел" << endl;
     }
@@ -175,11 +172,11 @@ int main() {
     //calculatePositiveCount();
     // calculateMiddleNegative();
     // calculateMaxPosition();
-    // calculateMinPositivePosition();
+    calculateMinPositivePosition();
     // printReverseArray();
     // printSquareArrElements();
     // calculateSquareSumArrElements();
-    calculateSumAndPosArrElemClosestToNum();
+    // calculateSumAndPosArrElemClosestToNum();
     return 0;
 }
 
