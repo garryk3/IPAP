@@ -154,24 +154,19 @@ void calculateSquareSumArrElements() {
 }
 
 void calculateSumAndPosArrElemClosestToNum() {
-    // найти сумму и позицию числа, ближайшего к числу, введенному с консоли
+    // найти значение и позицию числа, ближайшего к числу, введенному с консоли
     int len = requestArrLengthFor("разворота массива");
     const int* arr = buildArrRand(len, -5, 100);
     int num;
     cout << "Введите число для сравнения" << endl;
     cin >> num;
-    int diff = ERROR_CODE;
-    int resNum;
-    int pos;
-    for(int i = 0; i < len; i++) {
-        int localDiff = abs(num - arr[i]);
-        if(diff == ERROR_CODE || localDiff < diff) {
-            resNum = arr[i];
+    int pos = 0;
+    for(int i = 1; i < len; i++) {
+        if(abs(num - arr[i]) < abs(num - arr[pos])) {
             pos = i;
-            diff = localDiff;
         }
     }
-    cout << "Ближайшее число к " << to_string(num) << " из массива " << arrToString(arr, len) << " это " << resNum << " , его позиция " << to_string(pos) << endl;
+    cout << "Ближайшее число к " << to_string(num) << " из массива " << arrToString(arr, len) << " это " << to_string(arr[pos]) << ", его позиция - " << to_string(pos) << endl;
 }
 
 int main() {
