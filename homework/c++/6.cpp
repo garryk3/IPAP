@@ -21,6 +21,9 @@ int requestArrLengthFor(string rule) {
     int len;
     cout << "Введите длину массива для " << rule << endl;
     cin >> len;
+    while(!len) {
+        len = requestArrLengthFor(rule);
+    }
     return len;
 }
 
