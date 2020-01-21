@@ -5,4 +5,5 @@ using namespace std;
 
 unsigned int findFibNum(unsigned int pos);
 void printFib();
-double calculateSquare(int accuracy);
+void calculateSquare();
+const double* requestParams();
