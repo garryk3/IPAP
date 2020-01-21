@@ -16,10 +16,14 @@ unsigned int findFibNum(unsigned int pos) {
 const double* requestParams() {
     static double params[3];
 
-    cout << "Введите точку А ";
+    cout << "Введите координату х начала отрезка ";
     cin >> params[0];
-    cout << "Введите точку Б ";
+    cout << "Введите координату х конца отрезка ";
     cin >> params[1];
+    while(params[0] > params[1]) {
+        cout << "Конец отрека должен располагаться после начала отрезка. Введите координату конца отрезка ";
+        cin >> params[1];
+    }
     cout << "Введите шаг точности подсчета площади ";
     cin >> params[2];
 
@@ -49,7 +53,7 @@ void calculateSquare() {
 
     for(double x = startPointer; x < finishPointer; x += stepWidth) {
         height = calculateHeight(x);
-        square += stepWidth * height;
+        square += fabs(stepWidth * height);
     }
     cout << "Площадь фигуры шириной " << finishPointer - startPointer << " и высотой " << height << " равна " << square << endl;
 }
