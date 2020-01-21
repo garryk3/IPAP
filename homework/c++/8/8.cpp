@@ -20,7 +20,7 @@ const double* requestParams() {
     cin >> params[0];
     cout << "Введите точку Б ";
     cin >> params[1];
-    cout << "Введите степерь точности подсчета площади ";
+    cout << "Введите шаг точности подсчета площади ";
     cin >> params[2];
 
     return params;
@@ -35,6 +35,10 @@ void printFib() {
     cout << "Число фибоначии равно " << num << endl;
 }
 
+double calculateHeight(double x) {
+    return x * x + sin(x);
+}
+
 void calculateSquare() {
     const double* userParams = requestParams();
     const double startPointer = userParams[0];
@@ -44,7 +48,7 @@ void calculateSquare() {
     double square = 0;
 
     for(double x = startPointer; x < finishPointer; x += stepWidth) {
-        height = x * x + sin(x);
+        height = calculateHeight(x);
         square += stepWidth * height;
     }
     cout << "Площадь фигуры шириной " << finishPointer - startPointer << " и высотой " << height << " равна " << square << endl;
