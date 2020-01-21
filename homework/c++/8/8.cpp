@@ -17,4 +17,9 @@ void printFib() {
     cout << "Введите позицию числа фибоначчи ";
     cin >> pos; 
     const int num = findFibNum(pos);
+    cout << "Число фибоначии равно " << num << endl;
+}
+
+double calculateSquare(int accuracy) {
+    int y = x * x + sin(x);
 }
