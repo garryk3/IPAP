@@ -8,3 +8,9 @@ int* buildArrRand(const int length, const int minElem = -5, const int maxElem = 
     }
     return arr;
 }
+
+void swapNumbers(int *first, int *second) {
+    int temp = *second;
+    *second = *first;
+    *first = temp;
+}
