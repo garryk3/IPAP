@@ -1,4 +1,5 @@
 #include "8.h"
+#include "../common.h"
 
 int main() {
     // printFib();
@@ -16,12 +17,12 @@ unsigned int findFibNum(unsigned int pos) {
 const double* requestParams() {
     static double params[3];
 
-    cout << "Введите координату х начала отрезка ";
+    cout << "Введите координату X начала отрезка ";
     cin >> params[0];
-    cout << "Введите координату х конца отрезка ";
+    cout << "Введите координату Y конца отрезка ";
     cin >> params[1];
     while(params[0] > params[1]) {
-        cout << "Конец отрека должен располагаться после начала отрезка. Введите координату конца отрезка ";
+        cout << "Координата X должен быть больше Y. Введите Y еще раз... ";
         cin >> params[1];
     }
     cout << "Введите шаг точности подсчета площади ";
