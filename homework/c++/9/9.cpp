@@ -23,7 +23,20 @@ int* sortArray(int arr[], const int len) {
                 minElPos = j;
             }
         }
-        swapNumbers(arr[i], arr[minElPos]);
+        if(minElPos != i) {
+            swapNumbers(arr[i], arr[minElPos]);
+        }
+    }
+    return arr;
+}
+
+int* sortArrayBubble(int arr[], const int len) {
+    for(int i = 0; i < len - 1; i++) { // сравнение последнего элемента 
+        for(int j = 0; j < len - (i + 1); j++) {
+            if(arr[j + 1] < arr[j]) {
+                swapNumbers(arr[j + 1], arr[j]);
+            }
+        }
     }
     return arr;
 }
@@ -47,16 +60,10 @@ string arrToString(const int* arr, int length) {
 
 int main() {
     srand(time(NULL));
-    const int LEN = 9;
+    const int LEN = 90;
     int *arr = buildArrRand(LEN);
-    int arr2[5] = {4, 3, 2, 1, 0};
     cout << "array 1 before: " << arrToString(arr, LEN) << endl;
-    cout << "array 2 before: " << arrToString(arr2, 5) << endl;
-
-    sortArray(arr, LEN);
-    sortArray(arr2, 5);
-
+    sortArrayBubble(arr, LEN);
     cout << "array 1 after: " << arrToString(arr, LEN) << endl;
-    cout << "array 2 after: " << arrToString(arr2, LEN) << endl;
     return 0;
 }
