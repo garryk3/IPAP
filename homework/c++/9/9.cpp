@@ -52,114 +52,61 @@ int* sortArrayBubble(int arr[], const int len) {
     return arr;
 }
 
-int* sortMerge(int arr[], const int len) {
-    while(len > 2) {
-        int* result = new int(len);
+// int compareStep(int result[], int *currentPointer, int workedArr[], int wArrLen, int step) {
+//     result[step] = *workedArr[currentPointer];
+//     currentPointer++;
 
-        const int firstArrLen = len / 2;
-        const int secondArrLen = len - len / 2;
+//     if(currentPointer > wArrLen - 1) {
+//         result[step + 1] = workedArr[currentPointer];
+//         result[step + 2] = workedArr[currentPointer + 1];
+//         return 0;
+//     }
+//     return 1;
+// }
 
-        int* arr1 = new int[firstArrLen];
-        int* arr2 = new int[secondArrLen];
+// void concatArrs(int* result, int* arr1, int* arr2, int firstLen, int secondLen) {
+//     int firstPointer = 0;
+//     int secondPointer = 0;
+//     int isContinueCode = 1;
 
-        for(int i = 0; i < firstArrLen; i++) {
-            arr1[i] = arr[i];
-        }
-        for(int i = 0; i < secondArrLen; i++) {
-            arr2[i] = arr[i + firstArrLen];
-        }
-        arr1 = sortMerge(arr1, firstArrLen);
-        arr2 = sortMerge(arr2, secondArrLen);
-        int buffer = NULL;
-        int resultIndex = 0;
-        for(int i = 0; i < secondArrLen; i++) {
-            if(buffer == NULL) {
-                arr[resultIndex] = arr1[i] < arr2[i] ? arr1[i] : arr2[i];
-                buffer = arr1[i] < arr2[i] ? arr2[i] : arr1[i];
-                resultIndex++;
-            } else if(arr1[i] == NULL) { // длина второго массива всегда будет больше из-за округления целочисленногг деления
-                arr[resultIndex] = buffer < arr2[i] ? buffer : arr2[i];
-            } else {
-                bool isMinFirstEl = arr1[i] < arr2[i] && arr1[i] < buffer;
-                bool isMinSecondEl = arr1[i] > arr2[i] && arr2[i] < buffer;
-                bool isMinBuffer = buffer < arr2[i] && buffer < arr1[i];
+//     for(int i = 0; i < firstLen + secondLen; i++) {
+//         if(arr1[firstPointer] < arr2[secondPointer]) {
+//             int isContinue = compareStep(result, &firstPointer, arr1, firstLen, i);
+//         } else {
+//             int isContinue = compareStep(result, &secondPointer, arr2, secondLen, i);
+//         }
+//         if(isContinueCode == 0) {
+//             return;
+//         }
+        
+//     }
+// }
 
-                if(isMinFirstEl) {
-                    arr[resultIndex] = arr1[i];
-                    arr[resultIndex + 1] = buffer < arr2[i] ? buffer : arr2[i];
-                    buffer = buffer > arr2[i] ? buffer : arr2[i];
-                } else if(isMinSecondEl) {
-                    arr[resultIndex] = arr2[i];
-                    arr[resultIndex + 1] = buffer < arr1[i] ? buffer : arr1[i];
-                    buffer = buffer > arr1[i] ? buffer : arr1[i];
-                } else {
-                    arr[resultIndex] = buffer;
-                    arr[resultIndex + 1] = arr1[i] < arr2[i] ? arr1[i] : arr2[i];
-                    buffer = arr1[i] > arr2[i] ? arr1[i] : arr2[i];
-                }
-                resultIndex++;
-            }
-            i++;
-        }
+void mergeArrs(int arr1[], int arr2[], int arr1Len, int arr2Len, int result[]) {
+    int i = 0;
+    int j = 0;
+    int k = 0;
 
-        delete[] arr1;
-        delete[] arr2;
-        return result;
+    while (i < arr1Len && j < arr2Len) {
+        /* code */
     }
-    if(len == 2) {
-        if(arr[0] > arr[1]) {
-            swapNumbers(arr[0], arr[1]);
-        }
-        return arr;
-    } else {
-        return arr;
-    }
-}
-
-void concatArrs(int* result, int* arr1, int* arr2, int firstLen, int secondLen) {
-    int firstPointer = 0;
-    int secondPointer = 0;
-
-    for(int i = 0; i < firstLen + secondLen; i++) {
-        if(arr1[firstPointer] < arr2[secondPointer]) {
-            result[i] = arr1[firstPointer];
-            firstPointer++;
-            if(firstPointer > firstLen - 1) {
-                result[i + 1] = arr2[secondPointer];
-                result[i + 2] = arr2[secondPointer + 1];
-                return;
-            }
-        } else {
-            result[i] = arr2[secondPointer];
-            secondPointer++;
-            if(secondPointer > secondLen - 1) {
-                result[i + 1] = arr1[firstPointer];
-                result[i + 2] = arr1[firstPointer + 1];
-                return;
-            }
-        }
-    }
+    
 }
 
 // сортировка слиянием
-int sortArrByMerge(int* arr, int len) {
+void sortArrByMerge(int arr[], int len) {
     if(len > 1) {
-        const int firstArrLen = len / 2;
-        const int secondArrLen = len - len / 2;
+        const int leftArrLen = len / 2;
+        const int rightArrLen = len - len / 2;
+        int* rightArr = &arr[leftArrLen];
+        int result[len];
 
-        int* arr1 = new int[firstArrLen];
-        int* arr2 = new int[secondArrLen];
+        sortArrByMerge(arr, leftArrLen);
+        sortArrByMerge(rightArr, rightArrLen);
 
-        for(int i = 0; i < firstArrLen; i++) {
-            arr1[i] = arr[i];
-        }
-        for(int i = 0; i < secondArrLen; i++) {
-            arr2[i] = arr[i + firstArrLen];
-        }
-        sortArrByMerge(arr1, firstArrLen);
-        sortArrByMerge(arr2, secondArrLen);
+        mergeArrs(arr, rightArr, leftArrLen, rightArrLen, result);
 
-        concatArrs(arr, arr1, arr2, firstArrLen, secondArrLen);
+        *arr = *result;
     }
 }
 
