@@ -52,43 +52,26 @@ int* sortArrayBubble(int arr[], const int len) {
     return arr;
 }
 
-// int compareStep(int result[], int *currentPointer, int workedArr[], int wArrLen, int step) {
-//     result[step] = *workedArr[currentPointer];
-//     currentPointer++;
-
-//     if(currentPointer > wArrLen - 1) {
-//         result[step + 1] = workedArr[currentPointer];
-//         result[step + 2] = workedArr[currentPointer + 1];
-//         return 0;
-//     }
-//     return 1;
-// }
-
-// void concatArrs(int* result, int* arr1, int* arr2, int firstLen, int secondLen) {
-//     int firstPointer = 0;
-//     int secondPointer = 0;
-//     int isContinueCode = 1;
-
-//     for(int i = 0; i < firstLen + secondLen; i++) {
-//         if(arr1[firstPointer] < arr2[secondPointer]) {
-//             int isContinue = compareStep(result, &firstPointer, arr1, firstLen, i);
-//         } else {
-//             int isContinue = compareStep(result, &secondPointer, arr2, secondLen, i);
-//         }
-//         if(isContinueCode == 0) {
-//             return;
-//         }
-        
-//     }
-// }
-
 void mergeArrs(int arr1[], int arr2[], int arr1Len, int arr2Len, int result[]) {
     int i = 0;
     int j = 0;
     int k = 0;
 
     while (i < arr1Len && j < arr2Len) {
-        /* code */
+        if(arr1[i] < arr2[j]) {
+            result[k++] = arr1[i++];
+        } else {
+            result[k++] = arr2[j++];
+        }
+    }
+    if(i == arr1Len) {
+        while (j < arr2Len) {
+            result[k++] = arr2[j++];
+        }
+    } else {
+        while(i < arr1Len) {
+            result[k++] = arr1[i++];
+        }
     }
     
 }
@@ -104,14 +87,17 @@ void sortArrByMerge(int arr[], int len) {
         sortArrByMerge(arr, leftArrLen);
         sortArrByMerge(rightArr, rightArrLen);
 
+        // if(len == 2) {
+        //     if(arr[0] > arr[1]) {
+        //         swapNumbers(arr[0], arr[1]);
+        //     }
+        // }
+
         mergeArrs(arr, rightArr, leftArrLen, rightArrLen, result);
 
         *arr = *result;
     }
 }
-
-// сортировка хоара
-int sortArrByHoarBubble(int* arr, int len) {}
 
 int* buildArrRand(const int length, const int minElem = 0, const int maxElem = 100) {
     int* arr = new int[length];
@@ -124,7 +110,7 @@ int* buildArrRand(const int length, const int minElem = 0, const int maxElem = 1
 
 int main() {
     srand(time(NULL));
-    const int LEN = 9;
+    const int LEN = 5;
     int *arr = buildArrRand(LEN);
     cout << "array 1 before: " << arrToString(arr, LEN) << endl;
     // sortArrayBubble(arr, LEN);
