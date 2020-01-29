@@ -73,7 +73,6 @@ void mergeArrs(int arr1[], int arr2[], int arr1Len, int arr2Len, int result[]) {
             result[k++] = arr1[i++];
         }
     }
-    
 }
 
 // сортировка слиянием
@@ -87,15 +86,11 @@ void sortArrByMerge(int arr[], int len) {
         sortArrByMerge(arr, leftArrLen);
         sortArrByMerge(rightArr, rightArrLen);
 
-        // if(len == 2) {
-        //     if(arr[0] > arr[1]) {
-        //         swapNumbers(arr[0], arr[1]);
-        //     }
-        // }
-
         mergeArrs(arr, rightArr, leftArrLen, rightArrLen, result);
 
-        *arr = *result;
+        for(int i = 0; i < len; i++) {
+            arr[i] = result[i];
+        }
     }
 }
 
@@ -110,7 +105,7 @@ int* buildArrRand(const int length, const int minElem = 0, const int maxElem = 1
 
 int main() {
     srand(time(NULL));
-    const int LEN = 5;
+    const int LEN = 10;
     int *arr = buildArrRand(LEN);
     cout << "array 1 before: " << arrToString(arr, LEN) << endl;
     // sortArrayBubble(arr, LEN);
