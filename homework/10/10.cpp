@@ -3,8 +3,8 @@
 
 using namespace std;
 
-const int N = 8;
-const int M = 4;
+const int N = 5;
+const int M = 6;
 
 void printMatr(int** matr, int row, int col) {}
 
@@ -13,8 +13,7 @@ void test0() {
     int counter = 0;
     for(int i = 0; i < N; i++) {
         for(int j = 0; j < M; j++) {
-            counter++;
-            matr[i][j] = counter;
+            matr[i][j] = ++counter;
         }
     }
     for(int i = 0; i < N; i++) {
@@ -31,18 +30,22 @@ void test1() {
 
     for(int i = 0; i < N; i++) {
         for(int j = 0; j < M; j++) {
-            if (j % 2 == 0) {
-                counterRow = 1 + i * N;
+            if(j == 0) {
+                counterRow = i + 1;
             } else {
-                counterRow = i * N;
+                if(j % 2 == 0) {
+                    counterRow += i * 2 + 1;
+                } else {
+                    counterRow = N * (j + 1) - i;
+                }
             }
             matr[i][j] = counterRow;
         }
     }
     for(int i = 0; i < N; i++) {
-        cout << "elem: ";
+        cout << "row " << i << " : ";
         for(int j = 0; j < M; j++) {
-            cout <<  matr[i][j] << " ";
+            cout <<  matr[i][j] << "    ";
         }
         cout << endl;
     }
