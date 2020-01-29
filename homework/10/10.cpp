@@ -24,12 +24,18 @@ void test0() {
         cout << endl;
     }
 }
+
+// матрица формата
+// 1  8  9
+// 2  7  10
+// 3  6  11
+// 4  5  12
 void test1() {
     int matr[N][M];
     int counterRow = 0;
 
     for(int i = 0; i < N; i++) {
-        for(int j = 0; j < M; j++) {
+        for(int j = 1; j < M; j++) {
             if(j == 0) {
                 counterRow = i + 1;
             } else {
@@ -49,6 +55,10 @@ void test1() {
         }
         cout << endl;
     }
+}
+
+int** generateRandomSquareMatrix(int len) {
+    int** result = new int*[len]; // массив указателей на int длины len
 }
 
 int main() {
