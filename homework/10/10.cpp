@@ -3,6 +3,10 @@
 
 using namespace std;
 
+//----------------------------------------------------------------
+// работа с матрицами
+// ---------------------------------------------------------------
+
 const int N = 5;
 const int M = 6;
 
@@ -35,7 +39,7 @@ void test1() {
     int counterRow = 0;
 
     for(int i = 0; i < N; i++) {
-        for(int j = 1; j < M; j++) {
+        for(int j = 0; j < M; j++) {
             if(j == 0) {
                 counterRow = i + 1;
             } else {
@@ -58,10 +62,43 @@ void test1() {
 }
 
 int** generateRandomSquareMatrix(int len) {
-    int** result = new int*[len]; // массив указателей на int длины len
+    if(len > 0) {
+        srand(time(0));
+        int** result = new int*[len]; // массив указателей на int длины len
+        for(int i = 0; i < len; i++) {
+            result[i] = new int[len];
+            for(int j = 0; j < len; j++) {
+                result[i][j] = rand() % 50;
+            }
+        }
+        return result;
+    }
+    return NULL;
+}
+
+void deleteMatrix(int*** mat, int len) {
+    for(int i = 0; i < len; i++) {
+        delete[] (* mat)[i];
+    }
+    delete[] (* mat);
+    *mat = NULL;
+}
+
+void printMatrix() {
+    int len = 10;
+    int** mat = generateRandomSquareMatrix(len);
+    for(int i = 0; i < len; i++) {
+        for(int j = 0; j < len; j++) {
+            cout.width(4);
+            cout << mat[i][j];
+        }
+        cout << endl << endl;
+    }
+    deleteMatrix(&mat, len);
 }
 
 int main() {
-    test1();
+    // test1();
+    printMatrix();
     return 0;
 }

@@ -25,5 +25,5 @@
 
 ![9-1.jpeg](../../images/c++/9-1.jpeg)
 
-**10 lesson**
-*0h:15m*
+**11 lesson**
+*2h:10m*
