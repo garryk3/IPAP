@@ -25,8 +25,8 @@ void readPoint(Point2D *test) {
 
 // формуля расстояния между двумя точками d=(x2−x1)2+(y2−y1)2
 double calculateLengthFromPointToPoint(Point2D *point1, Point2D *point2) {
-    double s = (point1->x - point2->x)*2 + (point1->y - point2->y)*2;
-    return sqrt(s);
+    double s = fabs((point1->x - point2->x)*2 + (point1->y - point2->y)*2);
+    return fabs(sqrt(s));
 };
 
 int calculateLengthBetweenPoints(Point2D* list, const int listLen) {
@@ -38,8 +38,9 @@ int calculateLengthBetweenPoints(Point2D* list, const int listLen) {
             printPoints(&list[i]);
             cout << "point 2: ";
             printPoints(&list[j]);
-            cout << "length: " << calculateLengthFromPointToPoint(&list[i], &list[j]) << endl;
-            fullLen += calculateLengthFromPointToPoint(&list[i], &list[j]);
+            const int distance = calculateLengthFromPointToPoint(&list[i], &list[j]);
+            cout << "length: " << distance << endl;
+            fullLen += distance;
         }
     }
     return fullLen;
@@ -56,12 +57,15 @@ Point2D* pointsFactory(const int count = 5) {
 }
 
 void test() {
-    Point2D* list = pointsFactory(5);
-    for(int i = 0; i < 5; i++) {
+    const int LEN = 4;
+    Point2D* list = pointsFactory(LEN);
+    for(int i = 0; i < LEN; i++) {
         printPoints(&list[i]);
     }
-    int fullLen = calculateLengthBetweenPoints(list, 5);
+    int fullLen = calculateLengthBetweenPoints(list, LEN);
     cout << "full length = " << fullLen << endl;
+    delete[] list;
+
 }
 
 int main() {
