@@ -26,10 +26,10 @@ void readPoint(Point2D *test) {
 // формуля расстояния между двумя точками d=(x2−x1)2+(y2−y1)2
 double calculateLengthFromPointToPoint(Point2D *point1, Point2D *point2) {
     double s = (point1->x - point2->x)*2 + (point1->y - point2->y)*2;
-    return fabs(sqrt(s));
+    return sqrt(s);
 };
 
-int calculateLengthBetweenPoints(Point2D *list, const int listLen) {
+int calculateLengthBetweenPoints(Point2D* list, const int listLen) {
     int fullLen = 0;
     for(int i = 0; i < listLen; i++) {
         for(int j = i + 1; j < listLen; j++) {
@@ -38,7 +38,7 @@ int calculateLengthBetweenPoints(Point2D *list, const int listLen) {
             printPoints(&list[i]);
             cout << "point 2: ";
             printPoints(&list[j]);
-            cout << " , length: " << calculateLengthFromPointToPoint(&list[i], &list[j]) << endl;
+            cout << "length: " << calculateLengthFromPointToPoint(&list[i], &list[j]) << endl;
             fullLen += calculateLengthFromPointToPoint(&list[i], &list[j]);
         }
     }
