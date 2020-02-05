@@ -145,18 +145,14 @@ int calculateMatrixPallindrome(int** matrix, int col, int row) {
     for(int i = 0; i < col; i++) {
         for(int j = 0; j < row; j++) {
             string stringElement = to_string(matrix[i][j]);
-            int finishIndex = stringElement.length() - 1;
-            int startIndex = 0;
-            int isNeedContinue = true;
-            int detectedCompare = 0;
-            while(finishIndex != startIndex && isNeedContinue) {
-                if(stringElement[finishIndex--] == stringElement[startIndex++]) {
-                    detectedCompare++;
-                } else {
-                    isNeedContinue = false;
+            bool detectedPallindrome = true;
+
+            for(int i = 0; i <= stringElement.length() / 2 && detectedPallindrome; i++) {
+                if(stringElement[i] != stringElement[stringElement.length() -1 - i]) {
+                    detectedPallindrome = false;
                 }
             }
-            if(detectedCompare != 0 && detectedCompare == stringElement.length() / 2) {
+            if(detectedPallindrome) {
                 pallindromeCount++;
                 cout << "Detected: " << stringElement << endl;
             }
@@ -197,11 +193,13 @@ int** getSortedMatrixBubble(int** matrix, int col, int row) {
 
 int main() {
     // test1();
-    int len = 20;
+    int len = 5;
     int** matrix = generateRandomSquareMatrix(len, 500);
     printMatrix(matrix, len);
-    int** sortedMatrix = getSortedMatrixBubble(matrix, len, len); 
-    printMatrix(sortedMatrix, len);
+    int lenPallindrome = calculateMatrixPallindrome(matrix, len, len);
+    cout << "len: " << lenPallindrome << endl;
+    // int** sortedMatrix = getSortedMatrixBubble(matrix, len, len); 
+    // printMatrix(sortedMatrix, len);
     deleteMatrix(&matrix, len);
     return 0;
 }
