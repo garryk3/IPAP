@@ -44,18 +44,6 @@ Element* popElement(Element* phead) {
     return newElement;
 }
 
-int deleteElementByValue(Element** phead, int value) {
-    int deleted = 0;
-    Element* p = *phead;
-    while (p != NULL) {
-        if(p->value == value) {
-            deleted++;
-        }
-        p = p->pnext;
-    }
-    return deleted;
-}
-
 Element* printElements(Element* phead) {
     while (phead != NULL) {
         cout << "Element value: " << phead->value << endl;
@@ -102,6 +90,35 @@ void enterUntil2Zero() {
     printElements(p);
 }
 
+int deleteElementByValue(Element** phead, int value) {
+    int deleted = 0;
+    Element* prev = NULL;
+    Element* p = *phead;
+    while (p != NULL) {
+        if(p->value == value) {
+            deleted++;
+            if(prev != NULL) {
+                prev->pnext = p->pnext;
+            } else {
+                *phead = p->pnext;
+            }
+            delete p;
+        } else {
+            prev = p;
+        }
+        p = p->pnext;
+    }
+    return deleted;
+}
+
+void startDeleteElementByValue(Element* phead) {
+    int delVal;
+    cout << "Deleting value: " << endl;
+    cin >> delVal;
+    int deleted = deleteElementByValue(&phead, delVal);
+    cout << "deleted: " << deleted << endl;
+}
+
 void test() {
     int LEN = 3;
     Element* phead = NULL;
@@ -109,13 +126,12 @@ void test() {
         phead = pushElement(phead);
     }
     printElements(phead);
-    // printElementsReverse(phead);
-    phead = popElement(phead);
+    startDeleteElementByValue(phead);
     cout << "after: " << endl;
-    printElementsReverse(phead);
+    printElements(phead);
 }
 
 int main() {
-    enterUntil2Zero();
+    test();
     return 0;
 }
