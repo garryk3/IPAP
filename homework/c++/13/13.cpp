@@ -30,6 +30,32 @@ Element* pushElement(Element* phead) {
     return phead;
 };
 
+Element* createElement(Element* phead) {
+    phead = new Element;
+    phead->pnext = NULL;
+    cout << "\nEnter number ";
+    cin >> phead->value;
+    return phead;
+}
+
+Element* popElement(Element* phead) {
+    Element* newElement = createElement(phead);
+    newElement->pnext = phead;
+    return newElement;
+}
+
+int deleteElementByValue(Element** phead, int value) {
+    int deleted = 0;
+    Element* p = *phead;
+    while (p != NULL) {
+        if(p->value == value) {
+            deleted++;
+        }
+        p = p->pnext;
+    }
+    return deleted;
+}
+
 Element* printElements(Element* phead) {
     while (phead != NULL) {
         cout << "Element value: " << phead->value << endl;
@@ -55,25 +81,41 @@ Element* deleteElementsList(Element* phead) {
 }
 
 void printElementsReverse(Element* phead) {
-    int* values = new int[x];
-    while (phead != NULL) {
-        phead = phead->pnext;
+    if(phead != NULL) {
+        printElementsReverse(phead->pnext);
+        cout << "Element value " << phead->value << endl;
     }
 }
 
+void enterUntil2Zero() {
+    cout << "Entering 2 zero to finish\n";
+    Element* p = NULL;
+    int zeroCount = 0;
+    while(zeroCount < 2) {
+        p = popElement(p);
+        if(p->value == 0) {
+            zeroCount++;
+        } else {
+            zeroCount = 0;
+        }
+    }
+    printElements(p);
+}
+
 void test() {
-    int LEN = 4;
+    int LEN = 3;
     Element* phead = NULL;
     for(int i = 0; i < LEN; i++) {
         phead = pushElement(phead);
     }
     printElements(phead);
+    // printElementsReverse(phead);
+    phead = popElement(phead);
     cout << "after: " << endl;
-    deleteElementsList(phead);
-    printElements(phead);
+    printElementsReverse(phead);
 }
 
 int main() {
-    test();
+    enterUntil2Zero();
     return 0;
 }
