@@ -119,6 +119,24 @@ void startDeleteElementByValue(Element* phead) {
     cout << "deleted: " << deleted << endl;
 }
 
+void addNewElementSorted(Element** phead, int value) {
+	Element* p = createElement(*phead);
+	p->value = value;
+	Element* prev = NULL;
+	Element* current = *phead;
+	while(current != NULL && current->value <= value) {
+		prev = current;
+		current = current->pnext;
+	}
+	if(prev != NULL) {
+		prev->pnext = p;
+		p->pnext = current;
+	} else {
+		p->pnext = *phead;
+		*phead = p;
+	}
+}
+
 void test() {
     int LEN = 3;
     Element* phead = NULL;
