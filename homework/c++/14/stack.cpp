@@ -63,5 +63,6 @@ int main() {
     pop(st);
     pop(st);
     print(st);
+    delete st;
     return 0;
 }
