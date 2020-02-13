@@ -6,7 +6,7 @@
 using namespace std;
 
 // -------------------------------
-// string
+// string, links
 // -------------------------------
 
 void test(const string &str  /*  string* str */) {
@@ -30,7 +30,11 @@ void newZeroArray(int* &arr, int k) {
 }
 
 string arrToString(const int* arr, int length) {
+    if(arr == nullptr) {
+        return "array is empty";
+    }
     string str = "array: ";
+
     for(int i = 0; i < length; i++) {
         str += to_string(arr[i]) + (i != length - 1 ? ", " : "");
     }
@@ -38,16 +42,15 @@ string arrToString(const int* arr, int length) {
     return str;
 }
 
-void arrPush(int* &arr, int &len) {
-    if(arr != nullptr && len > 0) {
-        len += 1;
-        int* newArr = new int[len];
-        for(int i = 0; i < len - 1; ++i) {
-            newArr[i] = arr[i];
-        }
-        newArr[len - 1] = 999999990009;
-        arr = newArr;
+void arrPush(int* &arr, int &len, int val) {
+    len = arr == nullptr ? 1 : len;
+    int* newArr = new int[len];
+    for(int i = 0; i < len - 1; ++i) {
+        newArr[i] = arr[i];
     }
+    delete[] arr;
+    newArr[len - 1] = val;
+    arr = newArr;
 }
 
 int main() {
@@ -65,12 +68,12 @@ int main() {
     // int testVal = 9;
     // test2(testVal + 1);
     int LEN = 10;
-    int* arr = new int[LEN];
-    for(int i = 0; i < LEN; ++i) {
-        arr[i] = i;
-    }
+    int* arr = nullptr;
+    // for(int i = 0; i < LEN; ++i) {
+    //     arr[i] = i;
+    // }
     cout << arrToString(arr, LEN) << endl;
-    arrPush(arr, LEN);
+    arrPush(arr, LEN, 9999);
     cout << arrToString(arr, LEN) << endl;
     return 0;
 }
