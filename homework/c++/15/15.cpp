@@ -38,13 +38,16 @@ string arrToString(const int* arr, int length) {
     return str;
 }
 
-void arrPush(int* &arr, int len) {
-    int* newArr = new int[len + 1];
-    for(int i = 0; i < len; ++i) {
-        newArr[i] = arr[i];
+void arrPush(int* &arr, int &len) {
+    if(arr != nullptr && len > 0) {
+        len += 1;
+        int* newArr = new int[len];
+        for(int i = 0; i < len - 1; ++i) {
+            newArr[i] = arr[i];
+        }
+        newArr[len - 1] = 999999990009;
+        arr = newArr;
     }
-    newArr[len ] = 999999999;
-    arr = newArr;
 }
 
 int main() {
@@ -68,6 +71,6 @@ int main() {
     }
     cout << arrToString(arr, LEN) << endl;
     arrPush(arr, LEN);
-    cout << arrToString(arr, LEN + 1) << endl;
+    cout << arrToString(arr, LEN) << endl;
     return 0;
 }
