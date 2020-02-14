@@ -19,8 +19,8 @@ using namespace std;
 // записать отсортированный массив в файл
 // ------------------------------
 
-const string IN = "/home/projects/my/ipap/homework/c++/16 /in.txt";
-const string OUT = "/home/projects/my/ipap/homework/c++/16/out.txt";
+const string IN  = "/home/projects/my/ipap/homework/c++/16 /in.txt";
+const string OUT = "/home/projects/my/ipap/homework/c++/16 /out.txt";
 
 vector<int> readFile(string path = IN) {
     ifstream infile;
@@ -33,23 +33,19 @@ vector<int> readFile(string path = IN) {
         }
         infile.close();
     }
-            int num;
-        while(infile >> num) {
-            numbers.push_back(int(num));
-        }
-        infile.close();
     return numbers;
 };
 
-void writeToStream(ofstream &stream, int val) {
-    stream << val;
-}
-
-void writeToFile(vector<int> &list, string path = OUT) {
+void writeListToFile(vector<int> &list, string path = OUT) {
     ofstream outfile;
     outfile.open(path);
-    if(outfile.is_open()) {
-        // for_each(list.begin(), list.end(), writeToStream);
+    bool isOpen = outfile.is_open();
+    if(!outfile.is_open()) {
+        cout << "File not found: " << path << endl;
+    } else {
+        for(int i = 0; i < list.size(); i++) {
+            outfile << list[i] << " ";
+        }
         outfile.close();
     }
 };
@@ -70,28 +66,15 @@ void printVector(vector<int> &vec) {
 
 void readAndWriteSortedList() {
     vector<int> list = readFile();
-    sort(list.begin(), list.end());
+    cout << "before: ";
     printVector(list);
-    // writeToFile(list);
+    sort(list.begin(), list.end());
+    cout << "after: ";
+    printVector(list);
+    writeListToFile(list);
 };
 
 int main() {
     readAndWriteSortedList();
-    // string filename = IN;
-    // ofstream fout;
-    // fout.open(filename);
-    // if(fout.is_open()) {
-    //     string line = "ops";
-    //     while(line != "") {
-    //         cout << "enter line ";
-    //         char buffer[1000];
-    //         cin.getline(buffer, 1000);
-    //         line = buffer;
-    //         if(line != "") {
-    //             fout << line << endl;
-    //         }
-    //     }
-    //     fout.close();
-    // }
     return 0;
 }
