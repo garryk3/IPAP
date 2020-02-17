@@ -95,7 +95,7 @@ void Game::startGame() {
     this->reader.read();
     Person* activePerson = this->reader.getFirstDataPointer();
 
-    while(activePerson->getNextPerson()) {
+    while(activePerson) {
         this->enemy.kickedByForce(activePerson->getForce());
         if(activePerson->getNextPerson() != nullptr) {
             activePerson = activePerson->getNextPerson();
