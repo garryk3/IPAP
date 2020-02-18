@@ -46,9 +46,25 @@ string Point3D::getCoords() {
     return "x: " + to_string(getX()) + " , y: " + to_string(getY()) + " , z: " + to_string(getZ());
 }
 
+class ChildPoint: public Point3D {
+    public:
+        ChildPoint();
+        ~ChildPoint();
+};
+
+ChildPoint::ChildPoint() {
+    cout << "ChildPoint constructor init" << endl;
+};
+
+ChildPoint::~ChildPoint() {
+    cout << "ChildPoint destructor" << endl;
+};
+
 int main() {
     Point3D point;
+    ChildPoint* child = new ChildPoint();
     point.setCoords(2, 5, 8);
     point.print();
+    delete child;
     return 0;
 }

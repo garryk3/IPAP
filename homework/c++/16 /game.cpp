@@ -9,45 +9,52 @@
 
 using namespace std;
 
-const string DATA = "/home/projects/my/ipap/homework/c++/16 /person.txt";
+const string DATA = "/mnt/d/web/IPAP/homework/c++/16 /person.txt";
 
 class Person {
     private:
-        string name;
-        int force;
+        string name = "";
+        int force = 0;
         Person* nextPerson;
     public:
-        Person(string name, int force);
+        Person(string name = "", int force = 0);
         void setNextPerson(Person* person);
+        void createPerson(string name, int force);
         Person* getNextPerson();
         int getForce();
 
         ~Person() {
-            cout << "Person delete: " << name << endl;
-            delete nextPerson;
+            if(nextPerson != nullptr) {
+                delete nextPerson;
+            }
         }
 };
 
 Person::Person(string name, int force) {
     this->name = name;
     this->force = force;
-}
+};
 
 void Person::setNextPerson(Person *person) {
     nextPerson = person;
-}
+};
 
 Person *Person::getNextPerson() {
     return nextPerson;
-}
+};
 
 int Person::getForce() {
     return force;
 }
 
+void Person::createPerson(string name, int force) {
+    this->name = name;
+    this->force = force;
+}
+
 class Enemy {
     private:
-        int force = 1000;
+        int force = 1500;
     public:
         int getForce();
         void kickedByForce(int enemyForce);
@@ -55,7 +62,7 @@ class Enemy {
 
 int Enemy::getForce() {
     return this->force;
-}
+};
 
 void Enemy::kickedByForce(int enemyForce) {
     this->force -= enemyForce;
@@ -63,7 +70,7 @@ void Enemy::kickedByForce(int enemyForce) {
 
 class FileReader {
     private:
-        Person* firstPerson; 
+        Person* firstPerson = new Person; 
     public:
         void read(const string filename);
         void deleteDataSet();
@@ -75,7 +82,25 @@ Person* FileReader::getFirstDataPointer() {
 };
 
 void FileReader::read(const string filename = DATA) {
+    ifstream infile;
+    infile.open(filename);
+    Person* activePerson = this->firstPerson;
 
+    if(infile.is_open()) {
+        string num;
+        int force;
+        // значения идут парами (имя - значение силы)
+        while(infile >> num >> force) {
+            activePerson->createPerson(num, force);
+            Person* nextPerson = new Person();
+            activePerson->setNextPerson(nextPerson);
+            activePerson = nextPerson;
+        }
+        delete activePerson; // последний объект лищний без данных
+        infile.close();
+    } else {
+        cout << "File not found!" << endl;
+    }
 };
 
 void FileReader::deleteDataSet() {
@@ -95,7 +120,7 @@ void Game::startGame() {
     this->reader.read();
     Person* activePerson = this->reader.getFirstDataPointer();
 
-    while(activePerson) {
+    while(activePerson != nullptr) {
         this->enemy.kickedByForce(activePerson->getForce());
         if(activePerson->getNextPerson() != nullptr) {
             activePerson = activePerson->getNextPerson();
