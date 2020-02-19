@@ -6,8 +6,12 @@ Point::Point() {
     cout << "init" << endl;
 };
 
+Point::Point(int x, int y, int z) {
+    setCoords(x, y, z);
+};
+
 Point::~Point() {
-    cout << "delete" << endl;
+    cout << "delete Point" << endl;
 };
 
 string Point::getCoords() {
@@ -36,3 +40,8 @@ double Point::distanceTo(Point &other) {
     int dd =  x - other.getX();
     return sqrt(fabs((x - other.getX()) * (y - other.getY()) * (z - other.getZ())));
 };
+
+void Point::input() {
+    cout << "Enter coordinates x, y, z: ";
+    cin >> x >> y >> z;
+}

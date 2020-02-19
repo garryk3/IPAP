@@ -12,11 +12,13 @@ class Point {
         int z;
     public:
         string getCoords();
-        void setCoords(int x, int y, int z);
+        void setCoords(int, int, int);
         int getX();
         int getY();
         int getZ();
-        double distanceTo(Point &other);
+        void input();
+        double distanceTo(Point &);
         Point();
+        Point(int, int, int);
         ~Point();
 };

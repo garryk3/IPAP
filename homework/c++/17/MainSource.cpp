@@ -8,18 +8,29 @@ class NamedPoint: public Point {
     protected:
         string name;
     public:
-        NamedPoint();
-        ~NamedPoint();
+        void input() {
+            cout << "Name: " << name;
+            cin >> name;
+            Point::input();
+        };
+        NamedPoint() {
+            cout << "Init named point: " << name << endl;
+        };
+        NamedPoint(string name, int x, int y, int z) : Point(x, y, z) {
+            this->name = name;
+        };
+        ~NamedPoint() {
+            cout << "NamedPoint with name " << name << " deleted" << endl;
+        };
 };
 
 int main() {
     Point point;
     Point point2;
-    point.setCoords(1, 2, 3);
-    point2.setCoords(10, 20, 30);
+    NamedPoint point3;
+    point.input();
+    point3.input();
     double distance = point.distanceTo(point2);
-    cout << point.getCoords() << endl;
-    cout << point2.getCoords() << endl;
     cout << "distance: " << to_string(distance) << endl;
     return 0;
 }
