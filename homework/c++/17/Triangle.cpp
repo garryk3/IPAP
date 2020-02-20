@@ -1,8 +1,7 @@
 #include <math.h>
 #include "Triangle.h"
 
-Triangle::Triangle(const int title, const Point& A, const Point& B, const Point& C) {
-    this->title = title;
+Triangle::Triangle(Point& A, Point& B, Point& C) {
     this->A = A;
     this->B = B;
     this->C = C;
@@ -10,6 +9,10 @@ Triangle::Triangle(const int title, const Point& A, const Point& B, const Point&
 string Triangle::getTitle() {
     return title;
 };
+void Triangle::setTitle(const string title) {
+    this->title = title;
+};
+
 Point& Triangle::getA() {
     return A;
 };
@@ -26,16 +29,25 @@ void Triangle::printCoords() {
 string Triangle::coordsToString() {
     return "Point A: " + this->A.getCoords() + ", Point B: " + this->B.getCoords() + ", Point C: " + this->C.getCoords();
 };
-double Triangle::calculateSidesLength() {
+double Triangle::calculateSideA() {
+    return sqrt(fabs((A.getX() - B.getX()) * 2 + (A.getY() - B.getY()) * 2 + (A.getZ() - B.getZ())));
+};
+
+double Triangle::calculateSideB() {
     // p=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2+(z_1-z_2)^2}
-    double sideA = sqrt((A.getX() - B.getX()) * 2 + (A.getY() - B.getY()) * 2 + (A.getZ() - B.getZ));
-    double sideB = sqrt((A.getX() - C.getX()) * 2 + (A.getY() - C.getY()) * 2 + (A.getZ() - C.getZ));
-    double sideA = sqrt((C.getX() - B.getX()) * 2 + (C.getY() - B.getY()) * 2 + (C.getZ() - B.getZ));
+    return sqrt(fabs((A.getX() - B.getX()) * 2 + (A.getY() - B.getY()) * 2 + (A.getZ() - B.getZ())));
+};
+
+double Triangle::calculateSideC() {
+    return sqrt(fabs((C.getX() - B.getX()) * 2 + (C.getY() - B.getY()) * 2 + (C.getZ() - B.getZ())));
 };
 
 double Triangle::calculateSquare() {
-    return;
+    double halfPerimetr = calculatePerimeter() / 2; 
+    return sqrt(fabs(halfPerimetr * (halfPerimetr - calculateSideA()) * (halfPerimetr - calculateSideB() * (halfPerimetr - calculateSideC()))));
 };
-double Triangle::calculatePerimeter() {};
+double Triangle::calculatePerimeter() {
+    return calculateSideA() + calculateSideB() + calculateSideC();
+};
 bool Triangle::compareWithTriangleEqual(const Triangle&) {};
 bool Triangle::compareWithTriangle(const Triangle&) {};

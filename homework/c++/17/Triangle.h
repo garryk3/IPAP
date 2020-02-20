@@ -12,15 +12,18 @@ class Triangle {
         Point B;
         Point C;
     public:
-        Triangle(const int, const Point&, const Point&, const Point&);
+        Triangle(Point&, Point&, Point&);
         string getTitle();
+        void setTitle(const string);
         Point& getA();
         Point& getB();
         Point& getC();
 
         void printCoords();
         string coordsToString();
-        double calculateSidesLength();
+        double calculateSideA();
+        double calculateSideB();
+        double calculateSideC();
         double calculateSquare();
         double calculatePerimeter();
         bool compareWithTriangleEqual(const Triangle&);

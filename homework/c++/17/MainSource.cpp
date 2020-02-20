@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Point.cpp"
+#include "Triangle.cpp"
 
 using namespace std;
 
@@ -24,13 +25,23 @@ class NamedPoint: public Point {
         };
 };
 
+void initTriangle() {
+    const string title = "Test";
+    Point point1, point2, point3;
+    point1.setCoords(2,5,3);
+    point2.setCoords(20,50,30);
+    point3.setCoords(12,54,32);
+    // point1.input();
+    // point2.input();
+    // point3.input();
+    Triangle triangle(point1, point2, point3);
+    triangle.setTitle("Triangle 1");
+    cout << "Side: " << triangle.calculateSideA() << endl;
+    cout << "Square: " << to_string(triangle.calculateSquare()) << endl;
+    cout << "Perimeter: " << to_string(triangle.calculatePerimeter()) << endl;
+}
+
 int main() {
-    Point point;
-    Point point2;
-    NamedPoint point3;
-    point.input();
-    point3.input();
-    double distance = point.distanceTo(point2);
-    cout << "distance: " << to_string(distance) << endl;
+    initTriangle();
     return 0;
 }
