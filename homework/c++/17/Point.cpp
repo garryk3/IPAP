@@ -6,7 +6,7 @@ Point::Point() {
     cout << "init" << endl;
 };
 
-Point::Point(int x, int y, int z) {
+Point::Point(int x, int y, int z = 0) {
     setCoords(x, y, z);
 };
 
@@ -18,7 +18,7 @@ string Point::getCoords() {
     return "x: " + to_string(x) + " y: " + to_string(y) + " z: " + to_string(z);
 };
 
-void Point::setCoords(int x, int y, int z) {
+void Point::setCoords(int x, int y, int z = 0) {
     this->x = x;
     this->y = y;
     this->z = z;
