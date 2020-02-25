@@ -29,3 +29,7 @@ class Triangle {
         bool compareWithTriangleEqual(const Triangle&);
         bool compareWithTriangle(const Triangle&);
 };
+
+inline bool operator==(const Triangle& x, const Triangle& y) {
+    // compare logic
+};
