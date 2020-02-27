@@ -9,6 +9,6 @@ template <class T> void swap(T& a, T& b) {
 };
 
 template <class T, int N>
-void swap() {}
+void swap() { }
 
 void main() {};
