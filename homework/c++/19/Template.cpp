@@ -28,7 +28,11 @@ template <class T> int MyArray<T>::setLength(int newSize) {
     this->size = newSize;
 };
 
-template <class T> void MyArray<class T>::pushBack(T element) {
+template <class T> void MyArray<T>::pushBack(T element) {
     this->setLength(this->size + 1);
     this->arr[this->size - 1] = element;
 };
+
+template <class T> T& MyArray<T>::at(int index) {
+    return arr[index];
+}

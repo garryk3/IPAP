@@ -10,4 +10,5 @@ class MyArray {
         ~MyArray();
         int setLength(int size);
         void pushBack(T element);
+        T& at(int index);
 };
