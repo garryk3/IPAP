@@ -1,87 +1,42 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
-            "type": "shell",
-            "label": "g++ build active file",
-            "command": "/usr/bin/g++",
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
             "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "build",
+                "${workspaceFolder}/homework/C#/1st_lesson/1st_lesson.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
             ],
-            "options": {
-                "cwd": "/usr/bin"
-            },
-            "group": "build"
+            "problemMatcher": "$msCompile"
         },
         {
-            "type": "shell",
-            "label": "cpp build active file",
-            "command": "/usr/bin/cpp",
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
             "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "publish",
+                "${workspaceFolder}/homework/C#/1st_lesson/1st_lesson.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
             ],
-            "options": {
-                "cwd": "/usr/bin"
-            }
+            "problemMatcher": "$msCompile"
         },
         {
-            "type": "shell",
-            "label": "gcc build active file",
-            "command": "/usr/bin/gcc",
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
             "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "watch",
+                "run",
+                "${workspaceFolder}/homework/C#/1st_lesson/1st_lesson.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
             ],
-            "options": {
-                "cwd": "/usr/bin"
-            }
-        },
-        {
-            "type": "shell",
-            "label": "cpp build active file",
-            "command": "/usr/bin/cpp",
-            "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ],
-            "options": {
-                "cwd": "/usr/bin"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": "build"
-        },
-        {
-            "type": "shell",
-            "label": "g++ build active file",
-            "command": "/usr/bin/g++",
-            "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ],
-            "options": {
-                "cwd": "/usr/bin"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "problemMatcher": "$msCompile"
         }
-    ],
-    "version": "2.0.0"
+    ]
 }
