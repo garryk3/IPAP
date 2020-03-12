@@ -1,0 +1,11 @@
+/mnt/d/web/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson
+/mnt/d/web/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson.deps.json
+/mnt/d/web/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson.runtimeconfig.json
+/mnt/d/web/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson.runtimeconfig.dev.json
+/mnt/d/web/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson.dll
+/mnt/d/web/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson.pdb
+/mnt/d/web/IPAP/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.csprojAssemblyReference.cache
+/mnt/d/web/IPAP/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.AssemblyInfoInputs.cache
+/mnt/d/web/IPAP/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.AssemblyInfo.cs
+/mnt/d/web/IPAP/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.dll
+/mnt/d/web/IPAP/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.pdb

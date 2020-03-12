@@ -63,9 +63,31 @@ namespace _2st_lesson
             int y = int.Parse(Console.ReadLine());
             Console.WriteLine($"You enter x: {x}, y: {y}, z = x + y = {x + y}");
         } 
+
+        static void Test() {
+            Console.WriteLine("Push enter after leaving room...");
+            Console.ReadKey();
+            DateTime before = DateTime.Now;
+
+            Console.WriteLine("Push enter after return");
+            Console.ReadKey();
+            DateTime after = DateTime.Now;
+
+            TimeSpan ts = after - before;
+            Console.WriteLine($"Time: {ts.Hours} hours {ts.Minutes} min {ts.Seconds} seconds");
+            Console.WriteLine((int)ts.TotalSeconds);
+        }
+
+        static void HowManyDaysToSummer() {
+            DateTime now = DateTime.Now;
+            DateTime firstSummerDay = new DateTime(2020, 06, 01);
+            TimeSpan timeToSummer = firstSummerDay - now;
+            Console.WriteLine($"Days to next summer is: {timeToSummer.Days}");
+        }
+
         static void Main(string[] args)
         {
-            Calculate();
+            HowManyDaysToSummer();
         }
     }
 }
