@@ -1,3 +1,3 @@
 *3 lesson**
 
-*time: 30m*
+*time: 1h30m*
