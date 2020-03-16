@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/projects/my/ipap/homework/C#/3lesson/3lesson.csproj": {}
+    "/projects/IPAP/homework/C#/3lesson/3lesson.csproj": {}
   },
   "projects": {
-    "/home/projects/my/ipap/homework/C#/3lesson/3lesson.csproj": {
+    "/projects/IPAP/homework/C#/3lesson/3lesson.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/projects/my/ipap/homework/C#/3lesson/3lesson.csproj",
+        "projectUniqueName": "/projects/IPAP/homework/C#/3lesson/3lesson.csproj",
         "projectName": "3lesson",
-        "projectPath": "/home/projects/my/ipap/homework/C#/3lesson/3lesson.csproj",
-        "packagesPath": "/home/igor/.nuget/packages/",
-        "outputPath": "/home/projects/my/ipap/homework/C#/3lesson/obj/",
+        "projectPath": "/projects/IPAP/homework/C#/3lesson/3lesson.csproj",
+        "packagesPath": "/home/garryk3/.nuget/packages/",
+        "outputPath": "/projects/IPAP/homework/C#/3lesson/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/igor/.nuget/NuGet/NuGet.Config"
+          "/home/garryk3/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -50,7 +50,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.101/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -20,3 +20,14 @@
 /home/projects/my/ipap/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.AssemblyInfo.cs
 /home/projects/my/ipap/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.dll
 /home/projects/my/ipap/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.pdb
+/projects/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson
+/projects/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson.deps.json
+/projects/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson.runtimeconfig.json
+/projects/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson.runtimeconfig.dev.json
+/projects/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson.dll
+/projects/IPAP/homework/C#/3lesson/bin/Debug/netcoreapp3.1/3lesson.pdb
+/projects/IPAP/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.csprojAssemblyReference.cache
+/projects/IPAP/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.AssemblyInfoInputs.cache
+/projects/IPAP/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.AssemblyInfo.cs
+/projects/IPAP/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.dll
+/projects/IPAP/homework/C#/3lesson/obj/Debug/netcoreapp3.1/3lesson.pdb
