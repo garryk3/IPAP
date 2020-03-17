@@ -22,15 +22,11 @@ namespace _4lesson
             Console.WriteLine(greeting);
         }
 
-        static void Calculate() {
-            Console.Write("Enter a: ");
-            int a = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter b: ");
-            int b = Convert.ToInt32(Console.ReadLine());
+        static string CalculateEngine(int a, int b) {
             Console.Write("Enter operator: ");
             string operatorFor = Console.ReadLine();
 
-            int result;
+            int? result = null;
             switch (operatorFor) {
                 case "+": {
                     result = a + b;
@@ -38,17 +34,17 @@ namespace _4lesson
                     break;
                 }
                 case "-": {
-                    result = a + b;
+                    result = a - b;
                     Console.WriteLine($"a - b = {result}");
                     break;
                 }
                 case "*": {
-                    result = a + b;
+                    result = a * b;
                     Console.WriteLine($"a * b = {result}");
                     break;
                 }
                 case "/": {
-                    result = a + b;
+                    result = a / b;
                     Console.WriteLine($"a / b = {result}");
                     break;
                 }
@@ -57,6 +53,30 @@ namespace _4lesson
                     break;
                 }
             }
+            return result != null ? result.ToString() : "stop";
+        }
+
+        static void Calculate() {
+            Console.Write("Enter a: ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter b: ");
+            int b = Convert.ToInt32(Console.ReadLine());
+            int result = 0;
+            bool isContinue = true;
+
+            do {
+                string stringResult = CalculateEngine(a, b);
+                if(stringResult == "stop") {
+                    Console.WriteLine("Operation failed");
+                    isContinue = false;
+                    break;
+                }
+                result = Convert.ToInt32(stringResult);
+                a = result;
+                Console.Write("Enter next value: ");
+                b = Convert.ToInt32(Console.ReadLine());
+            } while(isContinue);
+            Console.WriteLine($"result = {result}");
         }
 
         static void Main(string[] args)
