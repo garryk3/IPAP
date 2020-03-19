@@ -82,6 +82,7 @@ namespace _4lesson
         static void Main(string[] args)
         {
             Calculate();
+            // test
         }
     }
 }
