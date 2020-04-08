@@ -1,3 +1,3 @@
-*6 lesson**
+*7 lesson**
 
-*time: 0h50m*
+*time: 7h00m*
