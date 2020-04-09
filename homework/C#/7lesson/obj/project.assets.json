@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "/home/garryk3/.nuget/packages/": {}
+    "C:\\Users\\egoru\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/projects/IPAP/homework/C#/7lesson/7lesson.csproj",
+      "projectUniqueName": "C:\\web\\IPAP\\homework\\C#\\7lesson\\7lesson.csproj",
       "projectName": "7lesson",
-      "projectPath": "/projects/IPAP/homework/C#/7lesson/7lesson.csproj",
-      "packagesPath": "/home/garryk3/.nuget/packages/",
-      "outputPath": "/projects/IPAP/homework/C#/7lesson/obj/",
+      "projectPath": "C:\\web\\IPAP\\homework\\C#\\7lesson\\7lesson.csproj",
+      "packagesPath": "C:\\Users\\egoru\\.nuget\\packages\\",
+      "outputPath": "C:\\web\\IPAP\\homework\\C#\\7lesson\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/garryk3/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\egoru\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -56,7 +56,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

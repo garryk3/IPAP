@@ -13,9 +13,24 @@ namespace _7lesson
             st[1] = 'O';
             Console.WriteLine(st);
         }
+
+        static void Ex2() {
+            int x = 10;
+            int y = 10;
+            Test(ref x); // value by link
+            Test(out y); // return link in output
+        }
+
+        static void Test(ref int y) {
+            y++;
+        }
+        static void Test2(out int y) {
+            y = 100;
+        }
+
         static void Main(string[] args)
         {
-            Ex1();
+            Ex2();
         }
     }
 }
