@@ -1,0 +1,13 @@
+C:\web\IPAP\homework\C#\8lesson\obj\Debug\netcoreapp3.1\8lesson.csprojAssemblyReference.cache
+C:\web\IPAP\homework\C#\8lesson\obj\Debug\netcoreapp3.1\8lesson.csproj.CoreCompileInputs.cache
+C:\web\IPAP\homework\C#\8lesson\obj\Debug\netcoreapp3.1\8lesson.AssemblyInfoInputs.cache
+C:\web\IPAP\homework\C#\8lesson\obj\Debug\netcoreapp3.1\8lesson.AssemblyInfo.cs
+C:\web\IPAP\homework\C#\8lesson\bin\Debug\netcoreapp3.1\8lesson.exe
+C:\web\IPAP\homework\C#\8lesson\bin\Debug\netcoreapp3.1\8lesson.deps.json
+C:\web\IPAP\homework\C#\8lesson\bin\Debug\netcoreapp3.1\8lesson.runtimeconfig.json
+C:\web\IPAP\homework\C#\8lesson\bin\Debug\netcoreapp3.1\8lesson.runtimeconfig.dev.json
+C:\web\IPAP\homework\C#\8lesson\bin\Debug\netcoreapp3.1\8lesson.dll
+C:\web\IPAP\homework\C#\8lesson\bin\Debug\netcoreapp3.1\8lesson.pdb
+C:\web\IPAP\homework\C#\8lesson\obj\Debug\netcoreapp3.1\8lesson.dll
+C:\web\IPAP\homework\C#\8lesson\obj\Debug\netcoreapp3.1\8lesson.pdb
+C:\web\IPAP\homework\C#\8lesson\obj\Debug\netcoreapp3.1\8lesson.genruntimeconfig.cache
