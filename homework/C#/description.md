@@ -1,2 +1,2 @@
-*11 lesson
-*time 01h20m*
+*15 lesson
+*time 1h00m*
