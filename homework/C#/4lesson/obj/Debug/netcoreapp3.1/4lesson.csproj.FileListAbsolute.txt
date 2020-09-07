@@ -1,0 +1,11 @@
+/projects/IPAP/homework/C#/4lesson/bin/Debug/netcoreapp3.1/4lesson
+/projects/IPAP/homework/C#/4lesson/bin/Debug/netcoreapp3.1/4lesson.deps.json
+/projects/IPAP/homework/C#/4lesson/bin/Debug/netcoreapp3.1/4lesson.runtimeconfig.json
+/projects/IPAP/homework/C#/4lesson/bin/Debug/netcoreapp3.1/4lesson.runtimeconfig.dev.json
+/projects/IPAP/homework/C#/4lesson/bin/Debug/netcoreapp3.1/4lesson.dll
+/projects/IPAP/homework/C#/4lesson/bin/Debug/netcoreapp3.1/4lesson.pdb
+/projects/IPAP/homework/C#/4lesson/obj/Debug/netcoreapp3.1/4lesson.csprojAssemblyReference.cache
+/projects/IPAP/homework/C#/4lesson/obj/Debug/netcoreapp3.1/4lesson.AssemblyInfoInputs.cache
+/projects/IPAP/homework/C#/4lesson/obj/Debug/netcoreapp3.1/4lesson.AssemblyInfo.cs
+/projects/IPAP/homework/C#/4lesson/obj/Debug/netcoreapp3.1/4lesson.dll
+/projects/IPAP/homework/C#/4lesson/obj/Debug/netcoreapp3.1/4lesson.pdb
