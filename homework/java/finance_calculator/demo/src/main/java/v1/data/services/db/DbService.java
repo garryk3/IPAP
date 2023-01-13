@@ -1,4 +1,4 @@
-package v1.data.providers.db;
+package v1.data.services.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,18 +7,19 @@ import java.sql.Statement;
 
 import v1.data.interfaces.IDatabase;
 
-public class DbProvider implements IDatabase {
-    static int ERROR_CODE = -1;
-    static String driverName = "org.sqlite.JDBC";
-    static String connectionName = "jdbc:sqlite:";
+public class DbService implements IDatabase {
+    static final int ERROR_CODE = -1;
     static String dbName = "finance.db";
 
+    private final String driverName = "org.sqlite.JDBC";
+    private final String connectionName = "jdbc:sqlite:";
     private Connection connection = null;
     private Statement statement = null;
 
     @Override
-    public void open() {
+    public void initialize() {
         open(dbName);
+        System.out.println("Db connected");
     }
 
     @Override
@@ -35,17 +36,6 @@ public class DbProvider implements IDatabase {
             e.printStackTrace();
             return;
         }
-    }
-
-    @Override
-    public void close() {
-        try {
-            if (connection != null)
-                connection.close();
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-
     }
 
     @Override
@@ -75,4 +65,14 @@ public class DbProvider implements IDatabase {
 
     }
 
+    @Override
+    public void close() {
+        try {
+            if (connection != null)
+                connection.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+    }
 }

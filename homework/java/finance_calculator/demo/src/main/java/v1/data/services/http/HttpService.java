@@ -1,8 +1,8 @@
-package v1.data.providers.http;
+package v1.data.services.http;
 
 import v1.data.interfaces.IHttp;
 
-public class HttpProvider implements IHttp {
+public class HttpService implements IHttp {
 
     @Override
     public <T> T request() {

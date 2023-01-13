@@ -1,7 +1,7 @@
 package v1.data.interfaces;
 
 public interface IDatabase {
-    public void open();
+    public void initialize();
 
     public void open(String name);
 

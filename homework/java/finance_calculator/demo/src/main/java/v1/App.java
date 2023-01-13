@@ -1,11 +1,10 @@
 package v1;
 
-/**
- * Hello world!
- *
- */
+import v1.application.Application;
+
 public class App {
+    private static Application app = new Application();
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        app.run();
     }
 }
