@@ -1,5 +1,7 @@
 package v1.data.interfaces;
 
+import java.sql.ResultSet;
+
 public interface IDatabase {
     public void initialize();
 
@@ -8,6 +10,6 @@ public interface IDatabase {
     public void close();
 
     public int executeUpdate(String sql);
-
-    public boolean executeQuery(String sql);
+    
+    public ResultSet executeQuery(String sql);
 }

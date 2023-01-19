@@ -2,6 +2,7 @@ package v1.data.services.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -53,16 +54,16 @@ public class DbService implements IDatabase {
     }
 
     @Override
-    public boolean executeQuery(String sql) {
+    public ResultSet executeQuery(String sql) {
         if (statement == null) {
-            return false;
+            return null;
         }
         try {
-            return statement.execute(sql);
+            return statement.executeQuery(sql);
         } catch (SQLException e) {
-            return false;
+            e.printStackTrace();
+            return null;
         }
-
     }
 
     @Override

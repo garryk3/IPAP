@@ -5,6 +5,7 @@ import java.util.List;
 import v1.data.dao.DaoFactory;
 import v1.data.interfaces.IRunnable;
 import v1.data.services.ServiceFactory;
+import v1.presentation.Test;
 
 public class Application {
     private final List<IRunnable> runnableServices = new ArrayList<IRunnable>();
@@ -31,6 +32,8 @@ public class Application {
     public void run() {
         System.out.println("Run App!");
         startServices();
+        // @TODO
+        new Test().startTest();;
     }
 
     public void stop() {

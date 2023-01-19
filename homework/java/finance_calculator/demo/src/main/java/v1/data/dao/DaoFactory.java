@@ -25,5 +25,9 @@ public class DaoFactory implements IRunnable{
         return new CategoryDao(dbService);
     }
 
+    public FinanceItemDao getFinanceItemDao() {
+        return new FinanceItemDao(dbService);
+    }
+
     public void stop() {}
 }
